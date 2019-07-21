@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost:3306/weiyidata?zeroDateTimeBehavior=convertToNull"
+     user="root"  password="wu1005shuang"/>
+ 
+<sql:query dataSource="${snapshot}" var="result">
+SELECT * from weiyi_tb1;
+</sql:query>
+<h1>JSP CoffeeShop</h1>
+<table border="1" width="100%">
+<tr>
+   <th>ID</th>
+   <th>种类</th>
+   <th>价格</th>
+</tr>
+<c:forEach var="row" items="${result.rows}">
+<tr>
+   <td><c:out value="${row.id}"/></td>
+   <td><c:out value="${row.param_name}"/></td>
+   <td><c:out value="${row.param_value}"/></td>
+</tr>
+</c:forEach>
+</table>
+    </body>
+</html>
